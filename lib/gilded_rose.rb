@@ -8,8 +8,11 @@ class GildedRose
   end
 
   def tick
-    if name == 'Normal Item'
+    case name
+    when 'Normal Item'
       return normal_item_tick
+    when 'Aged Brie'
+      return brie_tick
     end
     if @name != "Aged Brie" and @name != "Backstage passes to a TAFKAL80ETC concert"
       if @quality > 0
@@ -54,6 +57,13 @@ class GildedRose
         end
       end
     end
+  end
+  def brie_tick
+    @days_remaining -= 1
+    return if @quality >= 50
+
+    @quality += 1
+    @quality += 1 if @days_remaining <= 0 && @quality < 50
   end
 
   def normal_item_tick
