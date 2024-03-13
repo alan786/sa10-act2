@@ -18,6 +18,18 @@ class GildedRose
     end
   end
 
+  def tick
+    item.tick
+  end
+
+  def quality
+    item.quality
+  end
+
+  def days_remaining
+    item.days_remaining
+  end
+
   class Normal
     attr_reader :quality, :days_remaining
     def initialize(quality, days_remaining)
